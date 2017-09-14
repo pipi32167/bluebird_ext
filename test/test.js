@@ -54,7 +54,7 @@ describe('bluebird_ext', function () {
         return done < loop 
       }
       var loopPromise = function () {
-        return Promise.delay(1).then(function () {
+        return Promise.delay(0).then(function () {
           done ++
         })
       }
