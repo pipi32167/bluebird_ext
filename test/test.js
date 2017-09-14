@@ -64,6 +64,50 @@ describe('bluebird_ext', function () {
           assert.equal(done, loop)
         })
     })
+
+    it('should run while failed when condition throw error', function () {
+        
+      var done = 0, loop = 100
+      var condPromise = function () { 
+        throw new Error('condition error')
+      }
+      var loopPromise = function () {
+        return Promise.delay(1).then(function () {
+          done ++
+        })
+      }
+      var catchError = false
+      return Promise
+        .while(condPromise, loopPromise)
+        .catch(function (err) {
+          assert.ok(err instanceof Error)
+          catchError = true
+        })
+        .then(function () {
+          assert.ok(catchError)
+        })
+    })
+
+    it('should run while failed when loop throw error', function () {
+        
+      var done = 0, loop = 100
+      var condPromise = function () { 
+        return done < loop
+      }
+      var loopPromise = function () {
+        throw new Error('loop error')
+      }
+      var catchError = false
+      return Promise
+        .while(condPromise, loopPromise)
+        .catch(function (err) {
+          assert.ok(err instanceof Error)
+          catchError = true
+        })
+        .then(function () {
+          assert.ok(catchError)
+        })
+    })
   })
 
   describe('cargo', function () {
