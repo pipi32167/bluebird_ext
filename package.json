@@ -1,0 +1,27 @@
+{
+  "name": "bluebird_ext",
+  "version": "0.1.0",
+  "description": "Bluebird extentions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pipi32167/bluebird_ext.git"
+  },
+  "keywords": [
+    "bluebird",
+    "promise"
+  ],
+  "author": "Million",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pipi32167/bluebird_ext/issues"
+  },
+  "homepage": "https://github.com/pipi32167/bluebird_ext#readme",
+  "devDependencies": {
+    "bluebird": "^3.5.0",
+    "mocha": "^3.5.3"
+  }
+}
