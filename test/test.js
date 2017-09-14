@@ -1,6 +1,6 @@
 var assert = require('assert')
 var Promise = require('bluebird')
-require('../lib')
+require('../')
 
 describe('bluebird_ext', function () {
   describe('exec', function  () {
