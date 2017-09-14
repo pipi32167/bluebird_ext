@@ -75,10 +75,24 @@ describe('bluebird_ext', function () {
           return 1
         })
       })
-      var load = 10
+      var load = 9
       var callback = function (err, result) {
         assert.equal(err, null)
         assert.equal(result, 1)
+      }
+      return Promise.cargo(plist, load, callback)
+    })
+
+    it('should run cargo failed', function () {
+        
+      var plist = new Array(100).fill(0).map(function () {
+        return Promise.delay(1).then(function () {
+          throw new Error('unittest')
+        })
+      })
+      var load = 9
+      var callback = function (err) {
+        assert.ok(err instanceof Error)
       }
       return Promise.cargo(plist, load, callback)
     })
